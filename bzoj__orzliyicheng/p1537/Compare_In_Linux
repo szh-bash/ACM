@@ -1,0 +1,14 @@
+#!/bin/sh
+echo '1' > p1537.out
+echo '1' > std.out
+g++ data.cpp -o data
+g++ std.cpp -o std
+g++ p1537.cpp -o p1537
+while (diff p1537.out std.out) do
+echo '==data=='
+./data
+echo '==std=='
+./std
+echo '==p1537=='
+./p1537
+done;
