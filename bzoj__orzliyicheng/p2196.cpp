@@ -1,6 +1,0 @@
-#include<cstdio>
-#include<cstring>
-#include<algorithm>
-#include<iostream>
-#include<cctype> 
-using namespace std; typedef long long ll; inline int read() {	char c = getchar();	int ret = 0;	for(; !isdigit(c); c = getchar());	for(; isdigit(c); c = getchar()) ret = ret * 10 + c - '0';	return ret;} const int maxn = 509; int mat[maxn][maxn], sum[maxn][maxn], t[maxn], N, M, A, B; bool ok(int p, int c, int x) {	if(sum[c][M] - sum[p][M] < x * B) return false;	for(int i = 0; i <= M; i++)	t[i] = sum[c][i] - sum[p][i];	int _c = 1, _p = 0;	for(int i = 0; i < B; i++) {	while(t[_c] - t[_p] < x) if(++_c > M) return false;	_p = _c;	}	return true;} bool check(int x) {	int p = 0, c = 1;	for(int i = 0; i < A; i++) {	while(!ok(p, c, x)) if(++c > N) return false;	p = c;	}	return true;} int main() {	N = read(); M = read(); A = read(); B = read();	for(int i = 1; i <= N; i++) {	sum[i][0] = 0;	for(int j = 1; j <= M; j++)	sum[i][j] = sum[i][j - 1] + (mat[i][j] = read());	}	for(int j = 1; j <= M; j++) {	sum[0][j] = 0;	for(int i = 1; i <= N; i++)	sum[i][j] += sum[i - 1][j];	}	int ans, L = 0, R = int(1e9);	while(L <= R) {	int m = (L + R) >> 1;	if(check(m))	ans = m, L = m + 1;	else	R = m - 1;	}	cout << ans << "\n"; return 0;}
