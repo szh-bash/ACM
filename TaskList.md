@@ -2,11 +2,11 @@
 
     Algorithm:
         点分治
-    
-    Data Structure:
+    
+    Data Structure:
         Splay、Link-Cut-Tree、树状数组、线段树
-        
-    Mathematic:
+        
+    Mathematic:
         Sg函数
 
 # Task list 
