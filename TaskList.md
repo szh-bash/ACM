@@ -1,10 +1,10 @@
-# What I have done so far #
+# What I have done so far 
 
     Algorithm:
     
     Data Structure:
 
-# Task list #
+# Task list 
 
   2017.08.21
   
