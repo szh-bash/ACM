@@ -22,5 +22,10 @@
     Problem list:
             bzoj4358 Permu (k-d tree/莫队)
             bzoj3812 主旋律 (子集dp/容斥)
+  
+  2017.08.22
+  
+    Algorithm and Data Structure:
+        bit-set
             
 To Be Continued...
