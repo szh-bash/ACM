@@ -1,7 +1,7 @@
 :loop
-	//data.exe
-	//p1758_2.exe
-	//p1758_TLE.exe
-	fc sequence4.ans 1.ans
+	data.exe
+	p4977.exe
+	p4977_std.exe
+	fc 1.out 1.ans
 	if %errorlevel%==0 goto loop
 pause
