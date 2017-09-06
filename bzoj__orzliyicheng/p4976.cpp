@@ -15,9 +15,9 @@ int read(){
 	return p;
 }
 int main(){
-	fread(s,1,700000,stdin);
+	fread(s,1,800000,stdin);
 	n=read();k=read();
-	for (int i=1;i<=n;++i){
+	for (int i=1;i<=n;i++){
 		a[i]=read();
 		ans|=a[i];
 		if (a[i]>ma) ma=a[i];
@@ -28,13 +28,13 @@ int main(){
 		return 0;
 	}
 	ma=ans;
-	for (int j=1;j<=ma;++j)
+	for (int j=1;j<=ma;j++)
 		f[j]=INF;
-	for (int i=1;i<=n;++i)
-		for (int j=ma;j>=0;--j)
+	for (int i=1;i<=n;i++)
+		for (int j=ma;j>=0;j--)
 			if (f[j]<INF)
 				f[j|a[i]]=min(f[j]+1,f[j|a[i]]);
-	for (int j=ma;j>=0;--j)
+	for (int j=ma;j>=0;j--)
 		if (f[j]<=n-k){
 			cout<<j<<endl;
 			break;
