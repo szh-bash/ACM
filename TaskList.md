@@ -35,6 +35,6 @@
   
     Algorithm and Data Stucture:
             manacher
-            主席树
+            主席树
             
 To Be Continued...
