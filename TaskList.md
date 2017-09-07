@@ -7,6 +7,9 @@
         
     Mathematic:
         Sg函数
+        
+    STL:
+        Lower_bound(),Upper_bound(),set,multiset
 
 # Task list 
 
@@ -26,6 +29,12 @@
   2017.08.22
   
     Algorithm and Data Structure:
-        bit-set
+            bit-set
+            
+  2017.09..7
+  
+    Algorithm and Data Stucture:
+            manacher
+            主席树
             
 To Be Continued...
