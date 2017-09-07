@@ -1,11 +1,19 @@
-#include <set>
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-#include <iostream>
-#include <algorithm>
-#define N 1100010
-#define M 1200100
+#include<iostream>  
+#include<cstdlib>  
+#include<cstdio>  
+#include<cstring>  
+#include<ctime>  
+#include<cmath>  
+#include<algorithm>  
+#include<iomanip>  
+#include<queue>  
+#include<map>  
+#include<bitset>  
+#include<stack>  
+#include<vector>  
+#include<set>  
+#define N 500050 
+#define M 1048576
 #define mo 1000000007
 typedef long long ll;
 using namespace std;
@@ -24,13 +32,13 @@ int main(){
 	f[0][0]=1;
 	for (int i=1;i<=n;i++){
 		for (int j=0;j<M && j<=a[i]*2;j++){
-			g[j]=f[0][j]+((j^a[i])<M?f[d-1][j^a[i]]:0);
-			if (g[j]>=mo) g[j]%=mo;
+			g[j]=f[0][j]+f[d-1][j^a[i]];
+			if (g[j]>=mo) g[j]-=mo;
 		}
 		for (int k=d-1;k;k--){
-			for (int j=0;(j<M)&&((j^a[i])<M) &&(j<=a[i]*2);j++){
+			for (int j=0;(j<M)&&(j<=a[i]*2);j++){
 				f[k][j]+=f[k-1][j^a[i]];
-				if (f[k][j]>=mo) f[k][j]%=mo;
+				if (f[k][j]>=mo) f[k][j]-=mo;
 			}
 		}
 		for (int j=0;j<M && j<=a[i]*2;j++) f[0][j]=g[j];
