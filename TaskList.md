@@ -7,9 +7,9 @@
         
     Mathematic:
         Sg函数
-        
+     
     STL:
-        Lower_bound(),Upper_bound(),set,multiset
+        Lower_bound()、Upper_bound()、set、multiset
 
 # Task list 
 
