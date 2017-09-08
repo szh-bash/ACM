@@ -18,7 +18,7 @@
     Algorithm and Data Structure:
             数位Dp、状压dp
             整体二分
-            Cdq分治
+      (done)Cdq分治
             k-d tree
             分块/莫队(+树上)
             
