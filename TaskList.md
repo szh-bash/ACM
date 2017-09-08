@@ -1,7 +1,7 @@
 # What I have learned so far 
     Algorithm:
-        点分治
-    
+        点分治、cdq分治
+        
     Data Structure:
         Splay、Link-Cut-Tree、树状数组、线段树
         
