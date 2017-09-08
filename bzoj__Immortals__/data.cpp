@@ -7,11 +7,15 @@ using namespace std;
 int main(){
 	srand(unsigned(time(NULL)));
 	freopen("1.in","w",stdout);
-	int T=1, n=100000, m=100000;
+	int T=1, n=500000, m=500000;
 	while (T--){
 		cout<<n<<' '<<m<<endl;
-		for (int i=1;i<=n;i++) printf("%d ", rand()+1);cout<<endl;
-		for (int i=1;i<=m;i++) printf("%d %d\n", rand()+1, rand()+1);
+		for (int i=1;i<=n;i++)
+			printf("%d %d\n", rand(), rand());
+		for (int i=1;i<=m;i++){
+			int u=rand()+1, v=rand()+1;
+			printf("%d %d %d %d\n", u, v, rand()%u, rand()%v);
+		}
 	}
 	return 0;
 }
