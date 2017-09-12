@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #define N 100000
-#define M 8000000
+#define M 2500000
 using namespace std;
 int n, m, T, cnt, cnt_tree, LSH, a[N], trans[N], lsh[N], b1[N], b2[N], f[M], ls[M], rs[M], root[N];
 char s[5];
