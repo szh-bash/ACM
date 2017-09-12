@@ -1,10 +1,10 @@
 # What I have learned so far 
     Algorithm:
-        点分治、cdq分治
+        点分治、cdq分治、整体二分
         
     Data Structure:
-        Splay、Link-Cut-Tree、树状数组、线段树
-        
+        Splay、Link-Cut-Tree、树状数组、线段树、主席树(单点修改)
+    
     Mathematic:
         Sg函数
      
@@ -17,7 +17,7 @@
   
     Algorithm and Data Structure:
             数位Dp、状压dp
-            整体二分
+      (done)整体二分
       (done)Cdq分治
             k-d tree
             分块/莫队(+树上)
@@ -31,10 +31,20 @@
     Algorithm and Data Structure:
             bit-set
             
-  2017.09..7
+  2017.09.07
   
     Algorithm and Data Stucture:
             manacher
-            主席树
-            
+      (done)主席树
+      
+  2017.09.12
+  
+    Algorithm and Data Stucture:
+            KMP
+            AC自动机
+            后缀数组
+            后缀自动机
+            Sap(Isap)
+            Dinic
+            Min_cost_Max_flow
 To Be Continued...
