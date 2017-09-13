@@ -3,7 +3,7 @@
         点分治、cdq分治、整体二分
         
     Data Structure:
-        Splay、Link-Cut-Tree、树状数组、线段树、主席树(单点修改)
+        Splay、Link-Cut-Tree、树状数组、线段树、主席树
     
     Mathematic:
         Sg函数
