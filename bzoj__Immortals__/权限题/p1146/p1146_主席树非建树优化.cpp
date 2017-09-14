@@ -6,7 +6,7 @@
 #include <algorithm>
 #define N 80010
 #define M 80010*160 
-#define S 1000000
+#define S 2000000
 using namespace std;
 int n, m, T, x, cnt, DFN, LSH, ct_in, ct_out, cnt_tree;
 int f[M], ls[M], rs[M];
@@ -109,7 +109,7 @@ void update(int x, int y, int z){
 	}
 }
 int main(){
-	freopen("data_0.in","r",stdin);
+	freopen("network10.in","r",stdin);
 	freopen("p1146_主席树非建树优化.out","w",stdout);
 //read
 	fread(s,1,S,stdin);

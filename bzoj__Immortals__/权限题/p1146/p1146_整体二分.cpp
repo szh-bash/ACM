@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #define N 80010
-#define S 1000000
+#define S 2000000
 using namespace std;
 int n, m, T, x, gt, cnt, DFN, LSH;
 int a[N], k[N], u[N], v[N], c[N], ans[N], q[N];
@@ -94,7 +94,7 @@ void solve(int le, int ri, int L, int R){
 	solve(le+ct1,ri,mid+1,R);
 }
 int main(){
-	freopen("data_0.in","r",stdin);
+	freopen("network10.in","r",stdin);
 	freopen("整体二分.out","w",stdout);
 //read
 	fread(s,1,S,stdin);
@@ -132,9 +132,13 @@ int main(){
 			add(0,dfn[u[i]][1],-mp[v[i]]);
 //work
 	solve(1,gt,0,T);
+	//int tot=0;
 	for (int i=1;i<=m;i++)
-		if(q[i])
+		if(q[i]){
+			//tot++;
 			if (ans[i]) printf("%d\n", trans[ans[i]]);
 			else printf("invalid request!\n");
+		}
+	//cout<<n<<' '<<m<<' '<<tot<<' '<<m-tot<<endl;
 	return 0;
 }
