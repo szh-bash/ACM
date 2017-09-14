@@ -5,19 +5,20 @@
 #include <iostream>
 #include <algorithm>
 #define N 80010
+#define S 1000000
 using namespace std;
-int n, m, T, gt, cnt, DFN, LSH;
+int n, m, T, x, gt, cnt, DFN, LSH;
 int a[N], k[N], u[N], v[N], c[N], ans[N], q[N];
 int fa[N][21], dep[N], trans[N*2], lsh[N*2], nex[N*3], nu[N*3], dfn[N][2];
 map<int,int> mp;
+char s[S+100];
 struct qlz_ques{
 	int k, u, v, n;
 }l[N*6], b1[N*6], b2[N*6];
 int read(){
 	int p=0;
-	char ch=getchar();
-	while (ch<'0' || ch>'9') ch=getchar();
-	while (ch>='0' && ch<='9') p=p*10+ch-'0', ch=getchar();
+	while (s[x]<'0' || s[x]>'9') x++;
+	while (s[x]>='0' && s[x]<='9') p=p*10+s[x++]-'0';
 	return p;
 }
 void add_edge(int u, int v){
@@ -93,9 +94,10 @@ void solve(int le, int ri, int L, int R){
 	solve(le+ct1,ri,mid+1,R);
 }
 int main(){
-	freopen("1.in","r",stdin);
-	freopen("1.out","w",stdout);
+	freopen("data_0.in","r",stdin);
+	freopen("整体二分.out","w",stdout);
 //read
+	fread(s,1,S,stdin);
 	cnt=n=read();m=read();
 	for (int i=1;i<=n;i++)
 		lsh[++LSH]=a[i]=read();
