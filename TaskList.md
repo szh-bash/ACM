@@ -1,6 +1,6 @@
 # What I have learned so far 
     Algorithm:
-        点分治、cdq分治、整体二分
+        点分治、cdq分治、整体二分、kmp、扩展kmp
         
     Data Structure:
         Splay、Link-Cut-Tree、树状数组、线段树、主席树
@@ -40,10 +40,14 @@
   2017.09.12
   
     Algorithm and Data Stucture:
-            KMP
+      (done)kmp
+      (done)扩展kmp
             AC自动机
+            后缀树
             后缀数组
             后缀自动机
+            manacher
+            回文自动机
             Sap(Isap)
             Dinic
             Min_cost_Max_flow
