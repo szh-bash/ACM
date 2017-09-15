@@ -1,10 +1,13 @@
 # What I have learned so far 
     Algorithm:
-        点分治、cdq分治、整体二分、kmp、扩展kmp
+        点分治、cdq分治、整体二分
         
     Data Structure:
         Splay、Link-Cut-Tree、树状数组、线段树、主席树
-    
+        
+    String:
+        kmp、扩展kmp
+        
     Mathematic:
         Sg函数
      
