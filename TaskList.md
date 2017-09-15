@@ -51,4 +51,13 @@
             Sap(Isap)
             Dinic
             Min_cost_Max_flow
+      
+  2017.09.15
+  
+    Algorithm and Data Stucture:
+            树链剖分
+            
+    Problem list:
+            bzoj2342 双倍回文(manacher+set)
+            
 To Be Continued...
