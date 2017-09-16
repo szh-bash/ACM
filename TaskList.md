@@ -59,6 +59,7 @@
   
     Algorithm and Data Stucture:
             树链剖分
+            线性基:http://www.cnblogs.com/ljh2000-jump/p/5869991.html
             
     Problem list:
             bzoj2342 双倍回文(manacher+set)
