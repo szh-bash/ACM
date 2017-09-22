@@ -9,10 +9,13 @@ int main(){
 	while (scanf("%s", s)){
 		ls=strlen(s);
 		int m=max(ls,26);
+		for (int i=0;i<2*ls;i++) rk[i]=-1;
+		for (int i=0;i<m;i++) wv[i]=0; 
 		for (int i=0;i<ls;i++) a[i]=s[i]-'a';
 		for (int i=0;i<ls;i++) wv[a[i]]++;
 		for (int i=1;i<m;i++) wv[i]+=wv[i-1];
 		for (int i=0;i<ls;i++) sa[--wv[a[i]]]=i;
+		rk[sa[0]]=0;
 		for (int i=1;i<ls;i++) rk[sa[i]]=rk[sa[i-1]]+(a[sa[i]]!=a[sa[i-1]]);
 		for (int j=1;j<ls;j*=2){
 			int p=0;
