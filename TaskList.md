@@ -1,6 +1,6 @@
 # What I have learned so far 
     Algorithm:
-        点分治、cdq分治、整体二分
+        点分治、cdq分治、整体二分、树链剖分
         
     Data Structure:
         Splay、Link-Cut-Tree、树状数组、线段树、主席树
