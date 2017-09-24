@@ -58,7 +58,7 @@
   2017.09.15
   
     Algorithm and Data Stucture:
-            树链剖分
+            (done)树链剖分
             线性基:http://www.cnblogs.com/ljh2000-jump/p/5869991.html
             
     Problem list:
