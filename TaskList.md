@@ -72,11 +72,13 @@
             树分块
             容斥
             莫比乌斯
+            FFT
             
     Problem list:
             bzoj3731 Gty的妹子树
             bzoj3720 Gty的超级妹子树
             bzoj2325 [ZJOI2011]道馆之战
+            bzoj4836 [Lydsy2017年4月月赛]二元运算
             codeforces 436 div2 F
             
 To Be Continued...
