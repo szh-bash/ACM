@@ -20,7 +20,7 @@
   
     Algorithm and Data Structure:
             数位Dp
-	    状压dp
+            状压dp
       (done)整体二分
       (done)Cdq分治
             k-d tree
@@ -69,14 +69,14 @@
   
     Algorithm and Data Stucture:
             一般分块
-	    树分块
-	    容斥
+            树分块
+            容斥
             莫比乌斯
             
     Problem list:
             bzoj3731 Gty的妹子树
-	    bzoj3720 Gty的超级妹子树
-	    bzoj2325 [ZJOI2011]道馆之战
-	    codeforces 436 div2 F
+            bzoj3720 Gty的超级妹子树
+            bzoj2325 [ZJOI2011]道馆之战
+            codeforces 436 div2 F
             
 To Be Continued...
