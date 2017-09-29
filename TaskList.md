@@ -1,4 +1,4 @@
-# What I have learned so far 
+﻿# What I have learned so far 
     Algorithm:
         点分治、cdq分治、整体二分、树链剖分
         
@@ -9,17 +9,18 @@
         kmp、扩展kmp
         
     Mathematic:
-        Sg函数
+        Sg函数、exgcd
      
     STL:
-        Lower_bound()、Upper_bound()、set、multiset
+        Lower_bound()、Upper_bound()、set、multiset、map
 
 # Task list 
 
   2017.08.21
   
     Algorithm and Data Structure:
-            数位Dp、状压dp
+            数位Dp
+	    状压dp
       (done)整体二分
       (done)Cdq分治
             k-d tree
@@ -58,10 +59,24 @@
   2017.09.15
   
     Algorithm and Data Stucture:
-            (done)树链剖分
+      (done)树链剖分
             线性基:http://www.cnblogs.com/ljh2000-jump/p/5869991.html
             
     Problem list:
             bzoj2342 双倍回文(manacher+set)
+
+  2017.09.29
+  
+    Algorithm and Data Stucture:
+            一般分块
+	    树分块
+	    容斥
+            莫比乌斯
+            
+    Problem list:
+            bzoj3731 Gty的妹子树
+	    bzoj3720 Gty的超级妹子树
+	    bzoj2325 [ZJOI2011]道馆之战
+	    codeforces 436 div2 F
             
 To Be Continued...
