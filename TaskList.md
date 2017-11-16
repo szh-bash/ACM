@@ -1,6 +1,6 @@
 ﻿# What I have learned so far 
     Algorithm:
-        点分治、cdq分治、整体二分、树链剖分
+        点分治、cdq分治、整体二分、树链剖分、Tarjan求强连通分量及缩点、Tarjan求边双连通分量（删桥法）、Tarjan求割点和桥、匈牙利算法
         
     Data Structure:
         Splay、Link-Cut-Tree、树状数组、线段树、主席树
@@ -54,7 +54,7 @@
             回文自动机
             Sap(Isap)
             Dinic
-            Min_cost_Max_flow
+      (done)Min_cost_Max_flow
       
   2017.09.15
   
