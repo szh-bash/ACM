@@ -24,7 +24,7 @@ void __init(){
 	cnt=(n+1)*2+1;
 	s=2*n+1;t=2*n+2;
 	for (int i=1;i<=n;i++){
-		int x=read();
+		a[i]=read();
 		add(s,i+n,1,x);
 		add(s,i,1,0);
 		add(i+n,t,1,0);
