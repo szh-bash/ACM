@@ -38,7 +38,6 @@
   2017.09.07
   
     Algorithm and Data Stucture:
-            manacher
       (done)主席树
       
   2017.09.12
@@ -72,7 +71,7 @@
             树分块
             容斥
             莫比乌斯
-            FFT
+      (done)FFT
             
     Problem list:
             bzoj3731 Gty的妹子树
@@ -80,5 +79,18 @@
             bzoj2325 [ZJOI2011]道馆之战
             bzoj4836 [Lydsy2017年4月月赛]二元运算
       (done)codeforces 436 div2 F
-            
+
+  2017.11.24
+	
+    Algorithm and Data Stucture:
+	    数论
+	    图论
+	    字符串
+	    treap
+
+    Problem list:
+	    cf ecr33 E
+	    cf 894E
+	    zjoi 力
+
 To Be Continued...
