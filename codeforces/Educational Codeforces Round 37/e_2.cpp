@@ -13,16 +13,13 @@
 #define N 300000
 using namespace std;
 typedef long long ll;
-typedef pair<int, int> pii; 
-map <pii, bool> mp;
+map <int, bool> mp[N];
 vector <int> q, ans;
 int n, m, l[N];
 int read(){
 	int p=0, q=1;
 	char ch=getchar();
-	while (ch<'0' || ch>'9')
-		(ch=='-'?q=-1:0),
-		ch=getchar();
+	while (ch<'0' || ch>'9') ch=getchar();
 	while (ch>='0' && ch<='9') p=p*10+ch-'0', ch=getchar();
 	return p*q;
 }
@@ -32,7 +29,7 @@ int bfs(int u){
 	while (le<ri){
 		int v=l[++le];
 		for (int j=0;j<size;j++)
-			if (!mp[pii(v,q[j])]){
+			if (!mp[v][q[j]]){
 				l[++ri]=q[j];
 				q[j--]=q[--size];
 				q.pop_back();
@@ -44,8 +41,8 @@ int main(){
 	n=read();m=read();
 	for (int i=1;i<=m;i++){
 		int u=read(), v=read();
-		mp[pii(u,v)]=1;
-		mp[pii(v,u)]=1; 
+		mp[u][v]=1;
+		mp[v][u]=1; 
 	}
 	for (int i=1;i<=n;i++) q.push_back(i);
 	while (!q.empty()){
