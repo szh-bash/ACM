@@ -41,7 +41,6 @@ void FFT(com *a, int flag){
 			com w(1,0);
 			for (int k=0;k<i;k++, w*=wn){
 				com x=a[j+k], y=w*a[j+k+i];
-				//cout<<x<<' '<<y<<endl;
 				a[j+k]=x+y;
 				a[j+k+i]=x-y;
 			}
@@ -54,8 +53,6 @@ void solve(){
 	get_bit();
 	get_rtable();
 	FFT(a,1), FFT(b,1);
-	//for (int i=0;i<n;i++) cout<<a[i];cout<<endl;
-	//for (int i=0;i<n;i++) cout<<b[i];cout<<endl;
 	mul(a,b);
 	FFT(a,-1);
 }
