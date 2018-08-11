@@ -1,9 +1,9 @@
 ﻿# What I have learned so far 
     Algorithm:
-        点分治、cdq分治、整体二分、树链剖分、Tarjan求强连通分量及缩点、Tarjan求边双连通分量（删桥法）、Tarjan求割点和桥、匈牙利算法、最小费用流(spfa)
+        点分治、cdq分治、整体二分、树链剖分、Tarjan、匈牙利算法、最小费用流(spfa)、2-sat
         
     Data Structure:
-        Splay、Link-Cut-Tree、树状数组、线段树、主席树
+        Splay、Link-Cut-Tree、树状数组、Segment Tree、主席树、Suffix Array
         
     String:
         kmp、扩展kmp
@@ -47,7 +47,7 @@
       (done)扩展kmp
             AC自动机
             后缀树
-            后缀数组
+      (done)后缀数组
             后缀自动机
             manacher
             回文自动机
