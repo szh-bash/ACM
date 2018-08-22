@@ -9,13 +9,14 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
-#define eps 1e-5
+
 #define M 1000
 typedef unsigned long long ull;
 typedef long long ll;
 using namespace std;
-int n;
+int n, f[M][M];
 double w[M][M];
+const double eps= 1e-5;
 int read(){
     int p=0, q=1;
     char ch=getchar();
@@ -42,12 +43,14 @@ int main(){
 				//cout<<y-5<<endl;
 				int yp=ceil(y), yd=floor(y);
 				for (int k=0;k<2;k++){
-					if (si*si*(yp+k-y)*(yp+k-y)<w[j][yp+k]*w[j][yp+k]-eps){
-						ans++;
+					if (w[j][yp+k] && si*si*(yp+k-y)*(yp+k-y)<w[j][yp+k]*w[j][yp+k]-eps){
+						//ans++;
+						if (!(j==u1 && v2<v1 && k==1 || j==u2 && v2>v1 && k==1))ans++;
 						//cout<<j-5<<' '<<yp+k-5<<' '<<si*(yp+k-y)<<' '<<w[j][yp+k]<<endl;
 					}
-					if (si*si*(-yd+k+y)*(-yd+k+y)<w[j][yd-k]*w[j][yd-k]-eps && yp+k!=yd-k){
-						ans++;
+					if (w[j][yd-k] && si*si*(-yd+k+y)*(-yd+k+y)<w[j][yd-k]*w[j][yd-k]-eps && yp+k!=yd-k){
+						//ans++;
+						if (!(j==u2 && v2<v1 && k==1 || j==u1 && v2>v1 && k==1)) ans++;
 						//cout<<j-5<<' '<<yd-k-5<<' '<<si*(-yd+k+y)<<' '<<w[j][yd-k]<<endl;
 					}
 				}
@@ -63,8 +66,12 @@ int main(){
 				//cout<<y-5<<endl;
 				int xp=ceil(x), xd=floor(x);
 				for (int k=0;k<2;k++){
-					if (si*si*(xp+k-x)*(xp+k-x)<w[xp+k][j]*w[xp+k][j]-eps) ans++;
-					if (si*si*(-xd+k+x)*(-xd+k+x)<w[xd-k][j]*w[xd-k][j]-eps && xp+k!=xd-k) ans++;
+					if (w[xp+k][j] && si*si*(xp+k-x)*(xp+k-x)<w[xp+k][j]*w[xp+k][j]-eps)
+						if (!(j==v2 && u2>u1 && k==1 || j==v1 && u2<u1 && k==1)) ans++;
+						//ans++;
+					if (w[xd-k][j] && si*si*(-xd+k+x)*(-xd+k+x)<w[xd-k][j]*w[xd-k][j]-eps && xp+k!=xd-k)
+						if (!(j==v1 && u2>u1 && k==1 || j==v2 && u2<u1 && k==1)) ans++;
+						//ans++;
 				}
 			}
 			printf("%d\n", ans);
