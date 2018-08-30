@@ -9,7 +9,6 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
-
 #define M 1000
 typedef unsigned long long ull;
 typedef long long ll;
