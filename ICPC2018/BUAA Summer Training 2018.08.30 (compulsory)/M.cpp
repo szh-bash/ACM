@@ -12,7 +12,7 @@
 #include <tr1/unordered_map>
 #define M 200000
 #define N 1500000
-#define S 400000*10*5
+#define S 400000*20*5
 #define mo 1000000007
 typedef unsigned long long ull;
 typedef long long ll;
