@@ -102,10 +102,8 @@ int main(){
 			//cout<<v<<' '<<sa[v]<<' '<<a[sa[v]]<<endl;
 		}
 		for (int i=1;i<=mm;i++) q.pop();
-		//cout<<ans<<endl;
 		ans=1ll*ans*365%mo;
 		printf("%d\n", ans);
-		//cout<<ans*365%mo<<endl;
 	}
     return 0;
 }
