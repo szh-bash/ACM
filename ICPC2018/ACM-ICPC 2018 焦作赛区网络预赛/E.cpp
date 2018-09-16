@@ -10,8 +10,8 @@
 #include <iostream>
 #include <algorithm>
 #include <tr1/unordered_map>
-#define N 200050
-#define M 1000500
+#define N 300050
+#define M 1700500
 #define num(x) (x>='0' && x<='9')
 typedef unsigned long long ull;
 typedef long long ll;
@@ -50,7 +50,7 @@ void dfs2(int u){
 	if (nu[j]!=son[u])		dfs2(nu[j]);
 }
 void pushdown(int t, int l, int r){
-//	if (l>r) return;
+	if (l==r) return;
 	int mid=l+r>>1;
 	p[t<<1]*=p[t];
 	p[(t<<1)+1]*=p[t];
@@ -66,27 +66,29 @@ void pushdown(int t, int l, int r){
 	p[t]=1;
 }
 void upd1(int t, int l, int r, int le, int ri){
-	int mid=l+r>>1;
 	if (le<=l && r<=ri){
 		g[t]+=x;
 		sum[t]+=x*(r-l+1);
 		return;
 	}
+	int mid=l+r>>1;
 	pushdown(t,l,r);
 	if (le<=mid) upd1(t<<1,l,mid,le,ri);
 	if (ri>mid) upd1((t<<1)+1,mid+1,r,le,ri);
+    sum[t]=sum[t<<1]+sum[(t<<1)+1];
 }
 void upd2(int t, int l, int r, int le, int ri){
-	int mid=l+r>>1;
 	if (le<=l && r<=ri){
 		p[t]*=x;
 		g[t]*=x;
 		sum[t]*=x;
 		return;
 	}
+	int mid=l+r>>1;
 	pushdown(t,l,r);
 	if (le<=mid) upd2(t<<1,l,mid,le,ri);
 	if (ri>mid) upd2((t<<1)+1,mid+1,r,le,ri);
+    sum[t]=sum[t<<1]+sum[(t<<1)+1];
 }
 void upd3(int t, int l, int r, int le, int ri){
 	int mid=l+r>>1;
@@ -99,6 +101,7 @@ void upd3(int t, int l, int r, int le, int ri){
 	pushdown(t,l,r);
 	if (le<=mid) upd3(t<<1,l,mid,le,ri);
 	if (ri>mid) upd3((t<<1)+1,mid+1,r,le,ri);
+    sum[t]=sum[t<<1]+sum[(t<<1)+1];
 }
 ull query(int t, int l, int r, int le, int ri){
 	if (le<=l && r<=ri) return sum[t];
@@ -107,6 +110,7 @@ ull query(int t, int l, int r, int le, int ri){
 	pushdown(t,l,r);
 	if (le<=mid) p+=query(t<<1,l,mid,le,ri);
 	if (ri>mid) p+=query((t<<1)+1,mid+1,r,le,ri);
+    sum[t]=sum[t<<1]+sum[(t<<1)+1];
 	return p;
 }
 void re(int t, int l, int r){
@@ -134,7 +138,6 @@ int main(){
 				x=read();
 				int f1=top[u], f2=top[v];
 				while (f1!=f2){
-				//	cout<<u<<' '<<v<<endl;
 					if (dep[dfn[f1]]<dep[dfn[f2]]) swap(f1,f2), swap(u,v);
 					upd2(1,1,n,f1,lo[u]);
 					u=fa[dfn[f1]];
@@ -147,7 +150,6 @@ int main(){
 				x=read();
 				int f1=top[u], f2=top[v];
 				while (f1!=f2){
-			//		cout<<u<<' '<<v<<endl;
 					if (dep[dfn[f1]]<dep[dfn[f2]]) swap(f1,f2), swap(u,v);
 					upd1(1,1,n,f1,lo[u]);
 					u=fa[dfn[f1]];
