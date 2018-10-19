@@ -1,18 +1,24 @@
 ﻿# What I have learned so far 
     Algorithm:
-        点分治、cdq分治、整体二分、树链剖分、Tarjan、匈牙利算法、最小费用流(spfa)、2-sat
+        点分治、cdq分治、整体二分、树链剖分、Tarjan、匈牙利算法、最小费用流(spfa)、isap、dinic、2-sat、分数规划、暴力分块、莫队、比格思茅、dijkstra+priority_queue、spfa+slf+sll
         
     Data Structure:
-        Splay、Link-Cut-Tree、树状数组、Segment Tree、主席树、Suffix Array
+        Splay、Size-Balance Tree(待补充板子)、Link-Cut-Tree、树状数组、Segment Tree、主席树、虚树(待补充板子)、kd-tree(待复习加板子)
         
     String:
-        kmp、扩展kmp
+        kmp、扩展kmp、Suffix Array、DC3(只有板子 by ez_zkj)、trie树图、AC Automaton(待补充板子)、manacher(待补充板子)
         
     Mathematic:
-        Sg函数、exgcd
+        Sg函数、gcd、exgcd、简单mobius(待复习)、线性筛(待补充板子)、简单博弈、简单容斥、fft(只有板子)
+
+    Graph Theory:
+        二分图系列、简单最大流\最小割\费用流
+    
+    Dynamic Programming:
+        简单dp
      
     STL:
-        Lower_bound()、Upper_bound()、set、multiset、map
+        Lower_bound()、Upper_bound()、set、multiset、map、priority_queue、deque、vector
 
 # Task list 
 
@@ -33,7 +39,7 @@
   2017.08.22
   
     Algorithm and Data Structure:
-            bit-set
+      (done)bit-set
             
   2017.09.07
   
