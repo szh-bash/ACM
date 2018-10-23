@@ -40,10 +40,10 @@ int main(){
 	int _=rand()%2+1;
 	cout<<_<<endl;
 	for (;_;_--){
-		int n=rand()%5+1;
+		int n=rand()%10+1;
 		cout<<n<<endl;
 		for (int i=1;i<=n;i++)
-			cout<<rand()%1000+1<<' '<<(double)rand()/RAND_MAX*0.2+0.4<<endl;
+			cout<<rand()%100000+1<<' '<<(double)rand()/RAND_MAX*0.2+0.4<<endl;
 	}
     return 0;
 }

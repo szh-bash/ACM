@@ -11,12 +11,12 @@
 #include <algorithm>
 #include <tr1/unordered_map>
 #define K 20
-#define D 100
+#define D 500
 #define mo 1000000007
 #define eps 1e-10
 #define num(x) (x>='0' && x<='9')
 typedef unsigned long long ull;
-typedef double ld;
+typedef long double ld;
 typedef long long ll;
 using namespace std::tr1;
 using namespace std;
@@ -47,13 +47,20 @@ int main(){
 		k=read();
 		for (int i=1;i<=k;i++){
 			int c;
-			ld p0, p=1, sum=0;
+			ld p=1, sum=0;
+			double p0; 
 			scanf("%d%lf", &c, &p0);
+			ld q=1-p0; 
 			for (int j=1;j<=D;j++)
+				sum+=p*q,
 				p*=p0,
-				sum=1-p,
 				f[i][j]=power(sum,c);
 		}
+/*		for (int i=1;i<=k;i++){
+			for (int j=1;j<=D;j++)
+				cout<<f[i][j]<<endl;
+			cout<<endl;
+		}*/
 		if (k==1) {cout<<"1.000000"<<endl;continue;}
 		for (int i=1;i<=k;i++){
 			ld ans=0, s0=0, s1;
@@ -61,11 +68,12 @@ int main(){
 				s1=1;
 				for (int w=1;w<=k;w++)
 					if (w!=i) s1*=f[w][j];
-				if (s1<=s0) break;
+				//if (s1<=s0) break;
 				ans+=(s1-s0)*(1-f[i][j]);
 				s0=s1;
+				//cout<<j<<' '<<ans<<endl;
 			}
-			printf("%.6lf%s", ans, i==k?"\n":" ");
+			printf("%.6lf%s", (double)ans, i==k?"\n":" ");
 		}
 	}
     return 0;
