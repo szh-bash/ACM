@@ -11,12 +11,12 @@
 #include <algorithm>
 #include <tr1/unordered_map>
 #define K 20
-#define D 500
+#define D 100
 #define mo 1000000007
 #define eps 1e-10
 #define num(x) (x>='0' && x<='9')
 typedef unsigned long long ull;
-typedef long double ld;
+typedef double ld;
 typedef long long ll;
 using namespace std::tr1;
 using namespace std;
@@ -41,30 +41,32 @@ ld power(ld a, int b){
 	return c;
 }
 int main(){
+	freopen("data.in","r",stdin);
+	freopen("test.out","w",stdout); 
 	for (int _=read();_;_--){
 		k=read();
 		for (int i=1;i<=k;i++){
 			int c;
 			ld p0, p=1, sum=0;
-			scanf("%d%Lf", &c, &p0);
-			ld q=1-p0;
+			scanf("%d%lf", &c, &p0);
 			for (int j=1;j<=D;j++)
-				sum+=p*q,
 				p*=p0,
+				sum=1-p,
 				f[i][j]=power(sum,c);
 		}
+		if (k==1) {cout<<"1.000000"<<endl;continue;}
 		for (int i=1;i<=k;i++){
 			ld ans=0, s0=0, s1;
 			for (int j=1;j<=D;j++){
 				s1=1;
 				for (int w=1;w<=k;w++)
 					if (w!=i) s1*=f[w][j];
+				if (s1<=s0) break;
 				ans+=(s1-s0)*(1-f[i][j]);
 				s0=s1;
 			}
-			printf("%.6Lf ", ans);
+			printf("%.6lf%s", ans, i==k?"\n":" ");
 		}
-		puts("");
 	}
     return 0;
 }
