@@ -75,7 +75,7 @@ int main(){
 								break;
 							}
 						if (flag) continue;
-						if (!h1 && j==1 || !h2 && j==2 || !h3 &&j==3) continue;
+						if (!h1 && j==1 || !h2 && j==2 || !h3 && j==3) continue;
 						if (j==0 || j==2){
 							int p=0, cnt=0;
 							double tmp=0;
