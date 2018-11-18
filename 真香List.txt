@@ -1,0 +1,8 @@
+[已完成] 补掉training_1 lucky coins
+[未开始] top-tree
+[进行中] 复习kd-tree
+[进行中] 学习一个A* k短路
+[未开始] 看一下training_0其他未通过题？
+[未开始] 复习一个贾志鹏线性筛与积性函数.pdf
+[未开始] 证明training_2 L\M，调一下G题sa做法看看能不能卡过
+[暂时搁浅] 补北京网络赛
