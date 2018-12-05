@@ -27,15 +27,17 @@ int read(){
 void add(int u, int v){
 	nex[++cnt]=nex[u];nex[u]=cnt;nu[cnt]=v;
 }
-void dfs(int u){
+void dfs(int u, int fa){
 	f[u]=a[u];
 	g[u]=0;
 	for (int j=nex[u];j;j=nex[j]){
 		int v=nu[j];
+		if (v==fa) continue;
 		ll tmp=ans_max;
-		dfs(v);
+		dfs(v, u);
+		if (ans_max>tmp) tmp=ans_max, g[u]=0;
 		if (f[v]>0){
-			if (ans_max>tmp) g[u]=g[v];else g[u]+=g[v];
+			g[u]|=g[v];
 			f[u]+=f[v];
 		}
 	}
@@ -43,17 +45,17 @@ void dfs(int u){
 	else
 		if (f[u]==ans_max && !g[u]) ans_t++, g[u]=1;
 }
-bool cmp(ll a, ll b) { return a>b;}
 int main(){
 	cnt=n=read();
 	for (int i=1;i<=n;i++) a[i]=read();
 	for (int i=1;i<n;i++){
 		int u=read(), v=read();
 		add(u,v);
+		add(v,u);
 	}
 	ans_max=-1000000100;
 	ans_t=0;
-	dfs(1);
+	dfs(1,0);
 	cout<<ans_max*ans_t<<' '<<ans_t<<endl;
 	return 0;
 }
