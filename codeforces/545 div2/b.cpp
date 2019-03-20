@@ -39,6 +39,13 @@ int main(){
 		for (int j=1;j<=fc;j++)
 			if (j+fa>=i && fc-j+fb>=i && fc-j<=i && (n-fa-fb-fc>=abs(j+fa-i-(fc-j+fb-i)))
 				&& (n-fa-fb-fc+j+fa-i+fc-j+fb-i)%2==0){
+					int ta=fa, tb=fb, tc=fc;
+					for (int k=1;k<=n;k++)
+						if (a[k] && b[k] && (tc--)>fc-j ||
+							a[k] && !b[k] && ||
+							!a[k] && b[k] && ||
+							!a[k] && !b[k] && )
+					return 0; 
 				}
 	}
 	puts("-1");
