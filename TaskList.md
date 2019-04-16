@@ -18,7 +18,7 @@
         简单dp
      
     STL:
-        Lower_bound()、Upper_bound()、set、multiset、map、priority_queue、deque、vector
+        Lower_bound()、Upper_bound()、set、multiset、map、priority_queue、deque、vector、bitset
 
 # Task list 
 
