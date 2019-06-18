@@ -1,5 +1,6 @@
 # Task List
----record and remind
+> $\text{For recording and reminding}$
+
 ---
 ## What I have learned so far
     Algorithm:
