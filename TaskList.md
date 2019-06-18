@@ -1,5 +1,5 @@
 # Task List
-> $\text{For recording and reminding}$
+> For recording and reminding
 
 ---
 ## What I have learned so far
