@@ -45,6 +45,8 @@ ll calc(int x){
 	return 1LL*trans[x]*calcb(x)-calcc(x);
 }
 int main(){
+	freopen("e.in","r",stdin);
+	freopen("e.out","w",stdout);
 	cin>>n;
 	scanf("%d%d%d%d%d%d", &x[1], &x[2], &a1, &b1, &c1, &m1);
 	scanf("%d%d%d%d%d%d", &y[1], &y[2], &a2, &b2, &c2, &m2);
@@ -68,7 +70,7 @@ int main(){
 		addb(le,1);addb(ri,-1);
 		addc(le,1);addc(ri,-1);
 		ll target=calc(ct);
-		cout<<l[i]<<' '<<r[i]<<' '<<target<<endl;
+//		cout<<l[i]<<' '<<r[i]<<' '<<target<<endl;
 		if (target&1) target=target/2+1;else target/=2;
 		int l=1, r=ct;
 		while (l<r-1){
@@ -87,7 +89,7 @@ int main(){
 		else{
 			p=calcb(l);
 			sum=calc(l)-p;
-			ans=trans[l]+(target-(sum-p)-1)/p;
+			ans=trans[l]+(target-sum-1)/p;
 		}
 		printf("%lld\n", ans);
 	}
