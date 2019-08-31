@@ -10,8 +10,9 @@
 #include <iostream>
 #include <algorithm>
 #include <tr1/unordered_map>
-#define N 1000
-#define M 3000
+#define mo 1000000007
+#define num(x) (x>='0' && x<='9')
+#define N 2100
 typedef unsigned long long ull;
 typedef long long ll;
 using namespace std::tr1;
@@ -25,22 +26,25 @@ int read(){
     while (num(ch)) p=p*10+ch-'0', ch=getchar();
     return p*q;
 }
-void add(int u, int v, int w){
-	nex[++cnt]=nex[u];nex[u]=cnt;nu[cnt]=v;id[cnt]=w;
+int power(ll a, int b){
+	ll c=1;
+	while (b){
+		if (b&1) c=c*a%mo;
+		a=a*a%mo;
+		b>>=1;
+	}
+	return c;
 }
+int n, g[N], f[N];
 int main(){
-	while (~scanf("%d%d", &n, &m)){
-		n=read();m=read();
-		cnt=n+(!(n&1));
-		for (int i=1;i<=m;i++){
-			int u=read(), v=read();
-			add(u, v, i);
-			add(v, u, -i);
-			d[u]++;
-			d[v]++;
-		}
-		for (int i=1;i<=n;i++)
-			if (!flag[i]) dfs(i);
+	for (int _=read();_;_--){
+		n=read();
+		for (int i=1;i<n;i++) g[i-1]=read(), f[i]=0;
+		f[0]=n*g[0];
+		for (int i=1;i<n-1;i++)
+			for (int j=i;j<n-1;j++)
+				f[j]=max(f[j], f[j-i]-g[0]+g[i]);
+		printf("%d\n", f[n-2]);
 	}
     return 0;
 }
