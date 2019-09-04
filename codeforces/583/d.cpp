@@ -36,7 +36,7 @@ void add(int a[], int b[]){
 	a[0]+=b[0];
 	a[1]+=b[1];
 	if (a[0]>=mo0) a[0]-=mo0;
-	if (a[1]+=mo1) a[1]-=mo1;
+	if (a[1]>=mo1) a[1]-=mo1;
 //	cout<<a[0]<<' '<<a[1]<<endl;
 }
 int main(){
