@@ -6,8 +6,8 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
-#define C 26
-#define N 2000005
+#define C 27
+#define N 200005
 #define MOD 1000000007
 #define pii pair<int, int>
 typedef long long ll;
@@ -43,6 +43,10 @@ void printll(ll x){
 	s[ct]='\n';
 	for (int i=0;i<=ct;i++) output[output_len++]=s[i];
 }
+void add(int &a, int b){
+	a+=b;
+	if (a>=MOD) a-=MOD;
+}
 class Sam{
 	public:
 		int n, cnt, last;
@@ -50,17 +54,27 @@ class Sam{
 		int link[N], trans[N][C];
 		int in[N], size[N], q[N];
 		int f[N];
+		char st[N];
+		int dp[N];
+		int tot[N];
+		int flag[N];
+		int sg[N];
+		ll g[N][C][2];
 		friend void printi(int x);
+		friend void add(int &a, int b);
 		void clear();
 		void build(char *s);
 		void extend(int ch);
 		ll subst_diff();
 		void get_size();
 		ll get_sum();
+		void lcs();
+		void get_sg(int p);
 		void solve();
 };
 void Sam::clear(){
 	last=cnt=1;
+	memset(sg,-1,sizeof(sg));
 //	memset(f,0,sizeof(f));
 //	memset(q,0,sizeof(q));
 //	memset(in,0,sizeof(in));
@@ -72,11 +86,10 @@ void Sam::clear(){
 }
 void Sam::build(char *s){
 	clear();
-//	for (;'a'<=s[n] && s[n]<='z';n++);
 	n=strlen(s);
 	for (int i=0;i<n;++i) extend(s[i]-'a');
 	for (int i=1;i<=cnt;++i) minlen[i]=maxlen[link[i]]+1;
-//	get_size();
+	get_size();
 }
 void Sam::extend(int ch){
 	int cur=++cnt;
@@ -115,21 +128,108 @@ ll Sam::subst_diff(){
 	for (int i=1;i<=cnt;++i) res+=maxlen[i]-minlen[i]+1;
 	return res;
 }
-ll Sam::get_sum(){
+void Sam::lcs(){
+	int n=read();
+	for (int i=1;i<=n;i++){
+		scanf("%s", st+1);
+		int len=strlen(st+1);
+		int ans=0;
+		for (int j=1, p=1, lcs=0;j<=2*len;j++){
+			int ch=st[j>len?j-len:j]-'a';
+			while (p>1 && !trans[p][ch]) p=link[p], lcs=maxlen[p];
+			if (trans[p][ch]) p=trans[p][ch], ++lcs;
+			else lcs=0;
+			while (maxlen[link[p]]>=len) p=link[p], lcs=maxlen[p];
+			if (lcs>=len && flag[p]!=i) flag[p]=i, ans+=size[p];
+		}
+		printf("%d\n", ans);
+	}
+}
+void Sam::get_sg(int p){
+	sg[p]=0;
+	int flag[C];
+	for (int j=0;j<C;j++) flag[j]=0;
+	for (int j=0;j<C;j++){
+		int v=trans[p][j];
+		if (v){
+			if (sg[v]==-1) get_sg(v);
+			flag[sg[v]]=1;
+			for (int k=0;k<C;k++)
+				g[p][k][1]+=g[v][k][1];
+		}
+	}
+	for (int j=0;j<C;j++)
+		if (!flag[j]){
+			sg[p]=j;
+			break;
+		}
+	++g[p][sg[p]][1];
+	ll sum=0;
+	for (int j=0;j<C;j++) sum+=g[p][j][1];
+	for (int j=0;j<C;j++) g[p][j][0]=sum-g[p][j][1];
 }
 void Sam::solve(){
-	printll(get_sum());
-	printf("%s", output);
 }
-Sam sam;
-char st[N];
-int main(){
-	for (int _read();_;_--){
-		scanf("%s", st);
-		//fread(st,1,N/2,stdin);
-		sam.build(st);
-		sam.solve(); 
+Sam sam, sam0, sam1;
+char st[N], sta[N], stb[N];
+ll K;
+void solve(){
+	int len0=0, len1=0;
+	ll sum=0;
+	for (int j=0;j<C;j++){
+		sum+=sam0.g[1][j][1]*sam1.g[1][j][0];
+		if (sum>=K) break;
 	}
+	if (sum<K){
+		puts("NO");
+		return;
+	}
+	int s1=1, s2=1, ts1=0, ts2=0;
+	while (s1!=ts1 && K>sam1.g[1][sam0.sg[s1]][0]){
+		ts1=s1;
+		K-=sam1.g[1][sam0.sg[s1]][0];
+		for (int j=0;j<C;j++){
+			int v=sam0.trans[s1][j];
+			if (v){
+				ll sum=0;
+				for (int k=0;k<C;k++) sum+=sam0.g[v][k][1]*sam1.g[1][k][0];
+				if (sum<K) K-=sum;
+				else{
+					sta[len0++]=j+'a';
+					s1=v;
+					break;
+				}
+			}
+		}
+	}
+	int sg=sam0.sg[s1];
+	while (s2!=ts2 && K>(sg!=sam1.sg[s2])){
+		ts2=s2;
+		K-=sg!=sam1.sg[s2];
+		for (int j=0;j<C;j++){
+			int v=sam1.trans[s2][j];
+			if (v)
+				if (sam1.g[v][sg][0]>=K){
+					stb[len1++]=j+'a';
+					s2=v;
+					break;
+				}
+				else K-=sam1.g[v][sg][0];
+		}
+	}
+	sta[len0]='\0';
+	stb[len1]='\0';
+	printf("%s\n%s\n", sta, stb);
+}
+int main(){
+	cin>>K;
+	scanf("%s", st);
+	sam0.build(st);
+	sam0.get_sg(1);
+	scanf("%s", st);
+	sam1.build(st);
+	sam1.get_sg(1);
+	solve();
 	return 0;
 }
 
