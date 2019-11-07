@@ -2,98 +2,64 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
+#include <algorithm>
+#define N 100005
+#define C 26
 using namespace std;
-int n, hd[200100], next[200100], p[100100], f[100100], cnt, he[100100],l[100100], fa[100100], fail[100100];
-char va[200100], ans[100100];
-char s[100100], ss[100100];
-int main(){
-	scanf("%s", ss);
+int n, cnt=1, root=1;
+int go[N][C], flag[N], fail[N];
+char s[N], st[N];
+void init(){
+	scanf("%s", st+1);
 	cin>>n;
 	for (int i=1;i<=n;i++){
-		scanf("%s", s);
-		int j=0, k=0, ls=strlen(s);
-		while (k<ls){
-			int h=hd[j], flag=0;
-			while (h){
-				if (va[h]==s[k]) {flag=1;break;}
-				h=next[h];
-			}
-			if (flag)	j=h;
-			else{
-				next[++cnt]=hd[j];
-				hd[j]=cnt;
-				va[cnt]=s[k];
-				fa[cnt]=j;
-				he[cnt]=he[j]+1;
-				j=cnt;
-			}
-			++k;
+		scanf("%s", s+1);
+		int len=strlen(s+1);
+		for (int j=1, u=root;j<=len;j++){
+			int v=s[j]-'a';
+			if (!go[u][v]) go[u][v]=++cnt;
+			u=go[u][v];
 		}
-		f[cnt]=1;
+		flag[cnt]=len;
 	}
-	int r=0;
-	for (int i=0;i<=r;i++){
-		int j=hd[l[i]];
-		while (j){
-			l[++r]=j;
-			j=next[j];
-		}
+}
+int l[N];
+void get_fail(){
+	l[1]=root;
+	for (int j=0;j<C;j++) go[0][j]=root;
+	for (int le=1, ri=1;le<=ri;le++){
+		int u=l[le];
+		for (int j=0;j<C;j++)
+			if (go[u][j])
+				l[++ri]=go[u][j],
+				fail[go[u][j]]=go[fail[u]][j];
+			else go[u][j]=go[fail[u]][j];
 	}
-	int ls=strlen(ss);
-	for (int i=1;i<=r;i++){
-		int v=l[i];
-		int j=fail[fa[v]], flag=0;
-		while (j){
-			int k=hd[j];
-			while (k){
-				if (va[k]==va[v]){flag=1;break;}
-				k=next[k];
-			}
-			if (flag==0) j=fail[j];
-			else{
-				fail[v]=k;
-				break;
-			}
-		}
-		if (!flag && fa[v]){
-			int k=hd[j];
-			while (k){
-				if (va[k]==va[v]){flag=1;break;}
-				k=next[k];
-			}
-			if (flag) fail[v]=k;
-		}
+}
+int top, g[N];
+void solve(){
+	int len=strlen(st+1);
+	g[0]=root;
+	int top=1;
+	for (int u=root, i=1;i<=len;i++){
+		g[top]=go[u][st[i]-'a'];
+		s[top]=st[i];
+		top-=flag[g[top]];
+		u=g[top++];
 	}
-	cnt=0;
-	int j=0;
-	for (int i=0;i<ls;i++){
-		ans[++cnt]=ss[i];
-		int flag=0, k=0;
-		while (j){
-			k=hd[j];
-			while (k){
-				if (va[k]==ss[i]){flag=1;break;}
-				k=next[k];
-			}
-			if (!flag) j=fail[j];
-				else break;
-		}
-		if (!flag){
-			k=hd[j];
-			while (k){
-				if (va[k]==ss[i]){flag=1;break;}
-				k=next[k];
-			}
-		}
-		if (flag){
-			if (f[k]){
-				cnt-=he[k];
-				j=p[cnt];
-			}
-			else j=p[cnt]=k;
-		}
-		else j=p[cnt]=0;
-	}
-	for (int i=1;i<=cnt;i++) printf("%c", ans[i]);cout<<endl;
+	s[top]='\0';
+	printf("%s\n", s+1);
+}
+int main(){
+	init();
+	get_fail();
+	solve();
 	return 0;
 }
+
+/* 
+--介绍你自己-- 
+老师的方向
+你的论文大方向
+期待在老师的指导下进行论文撰写
+*/ 

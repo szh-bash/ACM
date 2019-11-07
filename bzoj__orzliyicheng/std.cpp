@@ -9,28 +9,20 @@
 #include<cstdlib>
 #include<iostream>
 #include<algorithm>
-#define inf 9000000000000000000LL
+#define inf (9000000000000000000LL)
 #define mp make_pair
-#define pa pair<ll,int>
+#define pli pair<ll,int>
+#define pii pair<int,int>
 #define ll long long 
 using namespace std;
-int read()
-{
-	int x=0,f=1;char ch=getchar();
-	while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}
+int read(){
+	int x=0,p=1;char ch=getchar();
+	while(ch<'0'||ch>'9'){ch=='-'?p=-1:0;ch=getchar();}
 	while(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}
-	return x*f;
+	return x*p;
 }
-int n,K;
-ll sum[100005],f[100005],g[100005];
-int a[100005],q[100005];
 int main()
 {
-	freopen("1.in","r",stdin);
-	freopen("std.out","w",stdout); 
-	n=read();
-	for(int i=1;i<=n;i++)a[i]=read();
-	sort(a+1,a+1+n);
-	for (int i=1;i<=n;i++) cout<<a[i]<<' ';cout<<endl;
+	cout<<inf<<endl;
 	return 0;
 }
