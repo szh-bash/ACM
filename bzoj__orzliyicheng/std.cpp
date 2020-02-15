@@ -21,8 +21,7 @@ int read(){
 	while(ch>='0'&&ch<='9'){x=x*10+ch-'0';ch=getchar();}
 	return x*p;
 }
-int main()
-{
+int main(){
 	cout<<inf<<endl;
 	return 0;
 }
