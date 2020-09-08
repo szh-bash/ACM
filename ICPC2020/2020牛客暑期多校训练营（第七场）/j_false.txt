@@ -1,0 +1,9 @@
+7
+E = b
+D = b
+A = x
+C = c
+A.f = C
+E.a = A
+B = D.a
+Z = B.f

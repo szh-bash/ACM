@@ -7,7 +7,7 @@
 #define INF 1000000000
 using namespace std;
 int n, m ,cnt, s, t, nex[M], nu[M], va[M], w[M];
-int dis[N], fl[N], fr[N], flag[N], l[N*10];
+int dis[N], fl[N], fr[N], fr_edge[N], flag[N], l[N*10];
 int read(){
 	int p=0;
 	char ch=getchar();
@@ -63,13 +63,9 @@ int sub(){
 	int j=t, mi=INF;
 	while (j!=s) mi=min(mi,fl[j]), j=fr[j];
 	j=t;
-	while (j!=s){
-		for (int k=nex[fr[j]];k;k=nex[k])
-			if (nu[k]==j){
-				va[k]-=mi;
-				va[k^1]+=mi;
-				break;
-			}
+	while (j!=s){		
+		va[fr_edge[j]]-=mi;
+		va[fr_edge[j]^1]+=mi;
 		j=fr[j];
 	}
 	return mi*dis[t];
