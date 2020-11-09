@@ -47,7 +47,7 @@ void solve(){
             for (int j=max(1,le[i]-dm);j<=min(ri[i]+dm,m);j++)
                 inc(i,id(up[i],j)),
                 inc(i,id(dw[i],j));
-            for (int j=max(1,up[i]-dn);j<=min(dw[i]+dn,n);j++)
+            forc (int j=max(1,up[i]-dn);j<=min(dw[i]+dn,n);j++)
                 inc(i,id(j,le[i])),
                 inc(i,id(j,ri[i]));
         }
