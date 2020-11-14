@@ -35,8 +35,27 @@ ll readll(){
 inline void ins(int x){
     a[++cnt]=x;
 }
+struct node{
+    int n, tp, x, y;
+}l[N+M];
+inline void add(int u, int x, int y){
+    l[++cnt].n=u;
+    l[cnt].tp=u>n;
+    l[cnt].x=x;
+    l[cnt].y=y;
+}
+bool cmp(node &a, node &b){
+    if (a.x>b.x) return 1;
+    if (a.x<b.x) return 0;
+    return a.y>b.y;
+}
 void proceed(){
-    
+    cnt=0;
+    for (int i=1;i<=n;i++)
+        
+    for (int i=n+1;i<=n+m;i++) add(i,fx[i],fy[i]);
+    sort(l+1,l+1+cnt,cmp);
+    for (int i=1;i<=cnt;i++)
 }
 void aswap(){
 }
