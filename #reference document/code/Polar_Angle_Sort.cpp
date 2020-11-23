@@ -9,12 +9,9 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
-#include <tr1/unordered_map>
-#define mo 1000000007
 #define num(x) (x>='0' && x<='9')
 typedef unsigned long long ull;
 typedef long long ll;
-using namespace std::tr1;
 using namespace std;
 int read(){
     int p=0, q=1;
@@ -25,107 +22,78 @@ int read(){
     while (num(ch)) p=p*10+ch-'0', ch=getchar();
     return p*q;
 }
-int power(ll a, int b){
-	ll c=1;
-	while (b){
-		if (b&1) c=c*a%mo;
-		a=a*a%mo;
-		b>>=1;
-	}
-	return c;
+ll readll(){
+    ll p=0, q=1;
+    char ch=getchar();
+    while (!num(ch))
+        (ch=='-'?q=-1:0),
+        ch=getchar();
+    while (num(ch)) p=p*10+ch-'0', ch=getchar();
+    return p*q;
 }
-#define N 10000
-#define Q 10000
-struct point{
-	ll x, y;
-	int n, q;
-	int xx;
-}l[N+Q], p[N+Q];
-ll cross(point a, point b){
-	return a.x*b.y-a.y*b.x;
+#define N 8005
+int n, ct, x[N], y[N], g[N];
+ll ans=1e18, sum;
+struct node{
+	int x, y, g, xx;
+	long double thi, cs;
+}l[N];
+inline ll xj(int i, int j){
+	return 1ll*l[i].x*l[j].y-1ll*l[i].y*l[j].x;
 }
-bool cmp(point a, point b){
+inline ll cross_dot(int x1, int y1, int x2, int y2){
+	return 1ll*x1*y2-1ll*x2*y1;
+}
+inline bool cmp(node &a, node &b){
+//  method1 (bad eps)
+	return a.thi<b.thi;
+ 
+//  method2 (no eps)
 	if (a.xx<b.xx) return 1;
 	if (a.xx>b.xx) return 0;
-	return cross(a,b)>0; 
+	return cross_dot(a.x, a.y, b.x, b.y)>0;
+	
+// method3 (idk, same bad eps)
+	if (a.xx<b.xx) return 1;
+	if (a.xx>b.xx) return 0;
+	if (a.xx<=2) return a.cs>b.cs;
+	return a.cs<b.cs;
 }
-int getxx(int x, int y){
-	if (x>0 && y>=0) return 1;
+int get_xx(int x, int y){
+	if (y>=0 && x>0) return 1;
 	if (x<=0 && y>0) return 2;
-	if (x<0 && y<=0) return 3;
+	if (y<=0 && x<0) return 3;
 	if (x>=0 && y<0) return 4;
 }
-ll dot (point a, point b){
-	return a.x*b.x+a.y*b.y;
-}
-int n, q;
-int ans[N];
-int le[2], ri[2];
-void solve(int o){
-	int x=p[o].x, y=p[o].y;
-	int cnt=0;
+inline ll sqr(int a) {return 1ll*a*a;}
+void solve(int u){
+	ct=0;
 	for (int i=1;i<=n;i++)
-		if (i!=o)
-			l[++cnt].n=p[i].n,
-			l[cnt].x=p[i].x-x,
-			l[cnt].y=p[i].y-y,
-			l[cnt].q=p[i].q,
-			l[cnt].xx=getxx(l[cnt].x, l[cnt].y);
-	sort(l+1,l+1+cnt,cmp);
-//	cout<<o<<endl;
-//	for (int i=1;i<=cnt;i++) cout<<l[i].x<<' '<<l[i].y<<' '<<l[i].n<<' '<<l[i].xx<<endl;
-	for (int i=cnt+1;i<=cnt*2;i++)
-		l[i].xx=l[i-cnt].xx+4,
-		l[i].x=l[i-cnt].x,
-		l[i].y=l[i-cnt].y,
-		l[i].q=l[i-cnt].q,
-		l[i].n=l[i-cnt].n;
-	int q=p[o].q;
-	if (!q){
-		for (int i=1, j=1;i<=cnt;i++){
-			while (j<=cnt*2){
-				if (l[j].xx<=l[i].xx) {j++;continue;}
-				if (l[j].xx>l[i].xx+1) break;
-				if (dot(l[i],l[j])>0){j++;continue;}
-				if (dot(l[i],l[j])<0) break;
-				++ri[l[j++].q];
-			}
-			ans[p[o].n]+=ri[1]*l[i].q;
-			while (i<cnt && !cross(l[i],l[i+1]) && (l[i].xx==l[i+1].xx))
-				ans[p[o].n]+=ri[1]*l[++i].q;
-			ri[0]=ri[1]=0;
+		if (i!=u){
+			l[++ct].g=g[i];
+			l[ct].x=x[i]-x[u];
+			l[ct].y=y[i]-y[u];
+			l[ct].thi=atan2l(l[ct].y, l[ct].x);
+			l[ct].cs=(long double) l[ct].x/sqrt(sqr(l[ct].x)+sqr(l[ct].y));
+			l[ct].xx=get_xx(l[ct].x, l[ct].y);
 		}
-	}
-	else{
-		for (int i=1, j=1;i<=cnt;i++){
-			while (j<=cnt*2){
-				if (l[j].xx<=l[i].xx) {j++;continue;}
-				if (l[j].xx>l[i].xx+1) break;
-				if (dot(l[i],l[j])>0){j++;continue;}
-				if (dot(l[i],l[j])<0) break;
-				++ri[l[j++].q];
-			}
-			le[0]=le[1]=0;
-			ans[l[i].n]+=ri[1]*(!l[i].q);
-			++le[l[i].q];
-			while (i<cnt && !cross(l[i],l[i+1]) && (l[i].xx==l[i+1].xx))
-				ans[l[i+1].n]+=ri[1]*(!l[i+1].q), 
-				le[l[++i].q]++;
-			if (ri[0]+ri[1])
-				for (int k=1;k<=ri[0]+ri[1];k++)
-					 ans[l[j-k].n]+=le[1]*(!l[j-k].q);
-			ri[0]=ri[1]=0;
-		}
+	sort(l+1,l+1+ct,cmp);
+	for (int i=ct+1;i<=ct*2;i++) l[i]=l[i-ct];
+	ll p1=g[u];
+	for (int i=1, j=1;i<=ct;i++){
+		while (j<ct+i && xj(i,j)>=0) p1+=l[j++].g;
+		ans=min(ans, abs(p1-(sum+g[u]+l[i].g-p1)));
+		p1-=l[i].g;
 	}
 }
 int main(){
-	n=read();q=read();
-	for (int i=1;i<=n+q;i++) p[i].x=read(), p[i].y=read(), p[i].n=i, p[i].q=i<=n;
-	n+=q;
+	n=read();
 	for (int i=1;i<=n;i++){
-		solve(i);
-//		for (int j=n-q+1;j<=n;j++) printf("%d\n", ans[j]);
+		x[i]=read(), y[i]=read(), sum+=(g[i]=read());
+		for (int j=1;j<i;j++)
+			if (x[j]==x[i] && y[j]==y[i]) {g[j]+=g[i];i--;n--;break;}
 	}
-	for (int i=n-q+1;i<=n;i++) printf("%d\n", ans[i]);
+	for (int i=1;i<=n;i++) solve(i);
+	cout<<ans<<endl;
     return 0;
 }
