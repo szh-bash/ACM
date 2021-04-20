@@ -35,7 +35,7 @@ int power(ll a, int b){
 	return c;
 }
 int main(){
-	for (int _=read();_;_--){
-	}
+	srand(233);
+	cout<<rand()<<endl;
     return 0;
 }

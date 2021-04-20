@@ -102,6 +102,7 @@ bool hit(int x0, int y0, int t){
 	return 0;
 }
 int main(){
+	srand(23333);
 	n=read();
 	y0=read(), x0=read();
 	y1=read(), x1=read();
