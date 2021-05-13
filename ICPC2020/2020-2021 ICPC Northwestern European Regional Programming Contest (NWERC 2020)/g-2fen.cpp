@@ -9,12 +9,10 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>
-#include <tr1/unordered_map>
 #define mo 1000000007
 #define num(x) (x>='0' && x<='9')
 typedef unsigned long long ull;
 typedef long long ll;
-using namespace std::tr1;
 using namespace std;
 typedef double LD;
 #define N 65
